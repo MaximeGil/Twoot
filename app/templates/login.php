@@ -11,21 +11,105 @@
 
         <!-- Bootstrap -->
         <link href="css/bootstrap.min.css" rel="stylesheet">
+        <link href="css/style.css" rel="stylesheet">
 
     </head>
-    <body>
-        <a href="/login"> Login </a> </br>
-        <a href="/register"> Register </a>
+    <body class="main">
 
-        <form  method="POST">
 
-            <label for="username">Username:</label>
-            <input type="text" name="username">
 
-            <label for="Password">Password:</label>
-            <input type="password" name="password">
 
-            <input type="submit" value="Login!">
-        </form>
+        <div class="container-fluid ">
+            <div class="row nav">
+                <div class="col-md-1">
+                </div>
+                <div class="col-md-6" >
+                    <h2>
+
+                        Twoot
+                    </h2>
+                </div>
+                <?php if ($_SESSION['is_authenticated']) { ?>
+                    <div class="col-md-4">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a href="/">Home</a>
+                            </li>
+                            <li >
+                                <a href="/status">Status</a>
+                            </li>
+                            <li >
+                                <a href="/logout">Log out</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                <?php } else { ?>
+                    <div class="col-md-4">
+                        <ul class="nav nav-tabs">
+                            <li >
+                                <a href="/">Home</a>
+                            </li>
+                            <li class="active">
+                                <a href="/register">Register</a>
+                            </li>
+                            <li >
+                                <a href="/login">Login</a>
+                            </li>
+                            <li >
+                                <a href="/status">Status (in anon)</a>
+                            </li>
+
+                        </ul>
+                    </div>
+                <?php } ?>
+                <div class="col-md-1">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                </div>
+                <div class="col-md-4 content">
+
+                    <form class="form-horizontal" role="form" method="post">
+                        <div class="form-group">
+
+                            <label for="username" class="col-sm-2 control-label">
+                                Username
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="text" name="username" class="form-control" id="inputEmail3" />
+                            </div>
+                        </div>
+                        <div class="form-group">
+
+                            <label for="Password" class="col-sm-2 control-label">
+                                Password
+                            </label>
+                            <div class="col-sm-10">
+                                <input type="password" name="password" class="form-control" id="inputPassword3" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-sm-offset-2 col-sm-10">
+
+                                <button type="submit" class="btn btn-default">
+                                    Sign in
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="col-md-4">
+                </div>
+            </div>
+        </div>
+
+
     </body>
 </html>

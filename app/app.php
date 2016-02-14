@@ -71,7 +71,7 @@ $app->post('/register', function (Request $request) use ($app, $db) {
     $dm = new UserMapper($db);
     $dm->persist($user);
 
-    $app->redirect('/status');
+    $app->redirect('/');
 });
 
 $app->get('/status', function (Request $request) use ($app, $model) {
@@ -103,9 +103,13 @@ $app->get('/status/(\d+)', function (Request $request, $id) use ($app, $model) {
 $app->post('/status', function (Request $request) use ($app, $model, $db) {
 
     if ($request->guessBestFormat() === "application/json") {
-        $test = $request->getAllParameters();
-        $model->insertOne($test);
-        $app->redirect('/status');
+        $message = $request->getParameter("message");
+        $status = new Status("", "Anonymous", $message);
+        $dm = new StatusesMapper($db);
+        $dm->persist($status);
+        
+        $response = new Http\Response("Success", 201);
+        return $response->send();
     }
 
     $status = new Status("", $request->getParameter("username"), $request->getParameter("message"));

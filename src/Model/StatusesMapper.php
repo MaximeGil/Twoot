@@ -25,10 +25,10 @@ class StatusesMapper {
         $params = array(
             'username' => $username,
             'message' => $message,
-            'date' => $date
+            'date' => $date,
         );
 
-        $req = "INSERT INTO statuses values('',:username,:message,:date)";
+        $req = "INSERT INTO statuses(id, username, message, date) values('',:username,:message,:date)";
         return $this->con->executeQuery($req, $params);
     }
 

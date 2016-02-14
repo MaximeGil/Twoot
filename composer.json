@@ -1,6 +1,8 @@
 {
 	"require": {
-		"willdurand/negotiation": "^2.0"
+		"willdurand/negotiation": "^2.0",
+		"fabpot/goutte": "^3.1",
+		"guzzlehttp/guzzle": "^6.1"
 	},
 "autoload":{
 "psr-4": { "": [ "src/" ] }
